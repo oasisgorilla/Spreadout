@@ -1,0 +1,42 @@
+version: '3'
+services:
+  spreadout_back:
+    build:
+      context: ./SpreadoutBack
+      dockerfile: Dockerfile
+    ports:
+      - "4000:3000"
+    networks:
+      - jungle_network
+
+  spreadout_bot:
+    build:
+      context: ./SpreadoutBot
+      dockerfile: Dockerfile
+    ports:
+      - "5000:3000"
+    networks:
+      - jungle_network
+
+  spreadout_front:
+    build:
+      context: ./SpreadoutFront
+      dockerfile: Dockerfile
+    ports:
+      - "6000:3000"
+    networks:
+      - jungle_network
+
+  spreadout_python:
+    build:
+      context: ./SpreadoutPython/django-server
+      dockerfile: Dockerfile
+    ports:
+      - "7000:3000"
+    networks:
+      - jungle_network
+
+networks:
+  jungle_network:
+    external: true
+    driver: bridge
