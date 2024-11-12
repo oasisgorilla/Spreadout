@@ -1,0 +1,14 @@
+services:
+  node:
+    build: .
+    image: nmm_backend  # 이미지 이름 지정
+    # container_name: nmm_backend
+    ports:
+      - "4000:3000"
+    networks:
+      - jungle_network
+
+networks:
+  jungle_network:
+    external: true
+    driver: bridge

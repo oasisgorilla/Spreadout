@@ -1,0 +1,124 @@
+/* styles.css */
+
+/* 전체 리스트의 스크롤 설정 */
+.scrollable-container {
+  max-height: 400px; /* 원하는 높이 설정 */
+  overflow-y: auto; /* 세로 스크롤 허용 */
+}
+
+/* 각 파일 항목의 스타일 */
+.scrollable-list {
+  list-style: none;
+  padding: 0 0 3rem 0;
+  margin: 0;
+}
+
+/* 파일 항목을 세로로 정렬 */
+.scrollable-list-item {
+  display: block;
+  padding: 8px 0px;
+  white-space: nowrap; /* 텍스트가 줄 바꿈 없이 한 줄로 표시되도록 */
+  overflow: hidden;
+  text-overflow: ellipsis; /* 텍스트가 너무 길면 '...'으로 표시되도록 */
+  position: relative; /* 목차를 파일 항목의 아래에 배치하기 위해 필요 */
+}
+
+/* 목차 리스트 스타일 */
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 8px; /* 파일 이름과 목차 사이의 여백 */
+  padding-left: 20px; /* 목차와 파일 이름 사이의 여백 */
+  font-size: 0.9em; /* 목차 글자 크기 조정 */
+  color: #888; /* 흐린 글씨 색상 */
+}
+
+/* 목차 항목의 스타일 */
+
+.file-info {
+  display: flex;
+  align-items: center;
+}
+
+.toc-toggle-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 8px; /* 파일명과 아이콘 사이의 간격 */
+}
+
+.toc-toggle-button svg {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle; /* SVG 아이콘을 텍스트와 동일한 줄에 맞춤 */
+}
+
+.toc-list {
+  margin-top: 8px;
+  padding-left: 20px;
+}
+
+.toc-item {
+  cursor: pointer;
+  padding: 4px 0; /* 각 목차 항목의 패딩 */
+  margin-bottom: 4px;
+}
+
+.ml-2 {
+  margin-left: 8px; /* 파일명과 아이콘 사이의 간격 */
+}
+
+/* 호버 하이라이트를 위한 CSS */
+.toc-item {
+  position: relative;
+  transition: background-color 0.3s ease;
+  padding-left: 10px;
+  margin-left: -10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%; /* 또는 특정 픽셀 값 */
+  display: block;
+}
+
+.toc-item:hover {
+  background-color: rgba(59, 130, 246, 0.1); /* 연한 파란색 배경 */
+}
+
+.toc-item:hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #3b82f6; /* 파란색 왼쪽 테두리 */
+}
+
+.toc-item-text {
+  transition: color 0.3s ease;
+}
+
+.toc-item:hover .toc-item-text {
+  color: #3b82f6; /* 호버 시 텍스트 색상 변경 */
+  font-weight: 500; /* 약간 더 굵게 */
+}
+
+.bookmark-button {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  background: none;
+}
+
+.bookmark-button:hover {
+  background: #cccccc93;
+}
+
+.bookmark-button:active {
+  background: #aaaaaa;
+}

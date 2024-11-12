@@ -1,0 +1,32 @@
+services:
+  chroma_windows:
+    image: chromadb/chroma
+    container_name: chroma
+    ports:
+      - "7000:8000"
+    environment:
+      - ALLOW_RESET=TRUE
+    networks:
+      - jungle_network
+    volumes:
+      - C:\db\chroma:/chroma/chroma
+    profiles:
+      - windows
+
+  chroma_linux:
+    image: chromadb/chroma
+    container_name: chroma
+    ports:
+      - "7000:8000"
+    environment:
+      - ALLOW_RESET=TRUE
+    networks:
+      - jungle_network
+    volumes:
+      - /home/ubuntu/db/chroma:/chroma/chroma
+    profiles:
+      - linux
+networks:
+  jungle_network:
+    external: true
+    driver: bridge

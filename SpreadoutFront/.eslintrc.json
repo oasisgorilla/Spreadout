@@ -1,0 +1,33 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "next/core-web-vitals"
+  ],
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "tabWidth": 2,
+        "useTabs": false,
+        "endOfLine": "auto",
+        "printWidth": 100
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": "off", // 사용되지 않는 변수 규칙 비활성화
+    "@typescript-eslint/no-explicit-any": "off", // any 타입 사용 규칙 비활성화
+    "@typescript-eslint/ban-ts-comment": "off", // @ts-ignore 주석 규칙 비활성화
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
