@@ -4,26 +4,33 @@ services:
     build:
       context: ./SpreadoutBack
       dockerfile: Dockerfile
+    image: nmm_backend
     ports:
       - "4000:3000"
     networks:
       - jungle_network
 
   spreadout_bot:
+    env_file:
+      - .env  # .env 파일 참조
     build:
       context: ./SpreadoutBot
       dockerfile: Dockerfile
+    image: nmm_bot
     ports:
-      - "5000:3000"
+      - "8100:3100"  # 호스트 포트 8100과 컨테이너 포트 3100 매핑
     networks:
       - jungle_network
+    volumes:
+      - /home/ubuntu/db/pdfs:/app/pdfs  # 호스트와 컨테이너의 디렉토리 연결
 
   spreadout_front:
     build:
       context: ./SpreadoutFront
       dockerfile: Dockerfile
+    image: nmm_frontend
     ports:
-      - "6000:3000"
+      - "5000:3000"  # 호스트의 5000 포트와 컨테이너의 3000 포트 매핑
     networks:
       - jungle_network
 
@@ -31,10 +38,39 @@ services:
     build:
       context: ./SpreadoutPython/django-server
       dockerfile: Dockerfile
+    image: nmm_django
     ports:
-      - "7000:3000"
+      - "8000:8000"  # 호스트의 8000 포트와 컨테이너의 8000 포트 매핑
     networks:
       - jungle_network
+
+  chroma_windows:
+    image: chromadb/chroma
+    container_name: chroma_windows
+    ports:
+      - "7000:8000"  # 호스트의 7000 포트와 컨테이너의 8000 포트 매핑
+    environment:
+      - ALLOW_RESET=TRUE  # 환경 변수 설정
+    networks:
+      - jungle_network
+    volumes:
+      - C:\db\chroma:/chroma/chroma  # Windows 경로와 컨테이너 경로 연결
+    profiles:
+      - windows  # Windows 프로파일에 포함
+
+  chroma_linux:
+    image: chromadb/chroma
+    container_name: chroma_linux
+    ports:
+      - "7000:8000"  # 호스트의 7000 포트와 컨테이너의 8000 포트 매핑
+    environment:
+      - ALLOW_RESET=TRUE  # 환경 변수 설정
+    networks:
+      - jungle_network
+    volumes:
+      - /home/ubuntu/db/chroma:/chroma/chroma  # Linux 경로와 컨테이너 경로 연결
+    profiles:
+      - linux  # Linux 프로파일에 포함
 
 networks:
   jungle_network:
