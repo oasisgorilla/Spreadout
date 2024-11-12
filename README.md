@@ -1,6 +1,6 @@
 # 책 내용을 구조화하여 제공해주는 PDF 뷰어 Spread out
 
-- 배포URL : [http://jungledaltong.shop/login](http://jungledaltong.shop/login)
+- 배포URL : (서버 마이그레이션 중)
 - 발표 영상 : [https://drive.google.com/file/d/1C8O_HrMDUpJAoY9Fi8Oh2_gmTn7kpZso/view?usp=sharing](https://drive.google.com/file/d/1C8O_HrMDUpJAoY9Fi8Oh2_gmTn7kpZso/view?usp=sharing)
 
 <br>
