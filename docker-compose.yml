@@ -12,7 +12,7 @@ services:
 
   spreadout_bot:
     env_file:
-      - .env  # .env 파일 참조
+      - ./SpreadoutBot/.env  # .env 파일 참조
     build:
       context: ./SpreadoutBot
       dockerfile: dockerfile
